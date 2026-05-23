@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bh3i7pvhdmn85"]
+
+[ext_resource type="Texture2D" uid="uid://befrapjb8pyhc" path="res://Assets/Sprites/downloads.png" id="1_xvb56"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_04mx0"]
+texture = ExtResource("1_xvb56")
+0:0/0 = 0
+2:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+2:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_4muih"]
+sources/0 = SubResource("TileSetAtlasSource_04mx0")
+
+[node name="Level 1" type="Node2D" unique_id=1072947492]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=755577597]
+tile_set = SubResource("TileSet_4muih")
