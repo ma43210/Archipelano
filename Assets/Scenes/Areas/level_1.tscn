@@ -1,27 +1,46 @@
-[gd_scene format=3 uid="uid://bh3i7pvhdmn85"]
+[gd_scene format=4 uid="uid://bh3i7pvhdmn85"]
 
 [ext_resource type="Texture2D" uid="uid://befrapjb8pyhc" path="res://Assets/Sprites/downloads.png" id="1_xvb56"]
+[ext_resource type="PackedScene" uid="uid://d08xuyvoepxhr" path="res://Assets/Scripts/player.tscn" id="2_04mx0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_04mx0"]
 texture = ExtResource("1_xvb56")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_4muih"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_04mx0")
 
 [node name="Level 1" type="Node2D" unique_id=1072947492]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=755577597]
+tile_map_data = PackedByteArray("AAAAAP//AAAEAAEAAAAAAP7/AAAEAAEAAAAAAP3/AAAEAAEAAAAAAPz/AAAEAAAAAAAGAPz/AAAGAAAAAAAGAP3/AAAGAAEAAAAGAP7/AAAGAAEAAAAGAP//AAAGAAEAAAABAPz/AAAFAAAAAAACAPz/AAAFAAAAAAADAPz/AAAFAAAAAAAEAPz/AAAFAAAAAAAFAPz/AAAFAAAAAAABAP3/AAAFAAEAAAABAP7/AAAFAAEAAAACAP7/AAAFAAEAAAACAP//AAAFAAEAAAACAP3/AAAFAAEAAAABAP//AAAFAAEAAAADAP//AAAFAAEAAAAEAP//AAAFAAEAAAADAP7/AAAFAAEAAAADAP3/AAAFAAEAAAAEAP3/AAAFAAEAAAAFAP3/AAAFAAEAAAAFAP7/AAAFAAEAAAAFAP//AAAFAAEAAAAEAP7/AAAFAAEAAAA=")
 tile_set = SubResource("TileSet_4muih")
+
+[node name="Player" parent="TileMapLayer" unique_id=49923203 instance=ExtResource("2_04mx0")]
+position = Vector2(3, -64)

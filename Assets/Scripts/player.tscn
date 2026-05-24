@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://d08xuyvoepxhr"]
+
+[ext_resource type="Script" uid="uid://dfhwyc5edpde5" path="res://Assets/Scenes/player_controller.gd" id="1_xqf8a"]
+[ext_resource type="Texture2D" uid="uid://b40c8dcvv6h70" path="res://Assets/Sprites/player_sprites.png" id="2_tttji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ij6vw"]
+size = Vector2(6, 14)
+
+[node name="Player" type="CharacterBody2D" unique_id=49923203]
+script = ExtResource("1_xqf8a")
+speed = 5.0
+jump_power = 8.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1793595997]
+offset = Vector2(0, -15)
+zoom = Vector2(6, 6)
+
+[node name="Animator" type="Node2D" parent="." unique_id=881545678]
+
+[node name="Sprite2D" type="Sprite2D" parent="Animator" unique_id=1963944556]
+position = Vector2(0, -6.325)
+scale = Vector2(1, 0.792)
+texture = ExtResource("2_tttji")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animator" unique_id=951113346]
+root_node = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1231551388]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_ij6vw")
