@@ -33,7 +33,6 @@ func start_archipelago_game():
 func next_level():
 	if current_level_in_array == 10:
 		WinnerisYou.you_win()
-		Archipelago.set_client_status(30)
 	if archipelago:
 		Archipelago.collect_location(current_level_in_array)
 	current_level = level_list[current_level_in_array]
@@ -74,7 +73,7 @@ func dead():
 #ARCHIPELAGO TESTING:
 func obtained_items(items: Array[NetworkItem]):
 	for i in items:
-		all_keys.append(i)
+			all_keys.append(i)
 
 
 func obtained_item(item: NetworkItem):
