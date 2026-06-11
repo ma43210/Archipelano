@@ -20,7 +20,6 @@ See https://github.com/EmilyV99/GodotAP"
 config/version="0.4.1"
 run/main_scene="uid://dcenb15o8u5l3"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
 
 [autoload]
 

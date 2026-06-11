@@ -5,21 +5,30 @@ var level_path = "res://Assets/Scenes/Levels/"
 var current_level_in_array = 1
 var level_list = []
 var key = 0
-var all_keys = [1]
+var all_keys = []
 
 func randomize_levels():
 	var all_levels = ["1A", "1B", "2A", "2B", "3A", "3B", "4A", "4B"]
 	all_levels.shuffle()
 	for i in 10:
 		level_list.append(all_levels.pop_front())
+	if archipelago:
+		#take level list out of save file
+		#put it in the save file
+		pass
 	print(level_list)
 #DEBUG, DELETE PRINT LATER
 
 
 func _ready():
+	Archipelago.connected.connect(start_archipelago_game)
 	randomize_levels()
 	reset_key()
-	Archipelago.connected
+
+func start_archipelago_game():
+	archipelago = true
+	get_tree().change_scene_to_file("res://Assets/Scenes/Levels/Menu.tscn")
+	
 #Level locations will be #
 func next_level():
 	if archipelago:
