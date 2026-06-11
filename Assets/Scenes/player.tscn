@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b40c8dcvv6h70" path="res://Assets/Sprites/player_sprites.png" id="1_ast1v"]
 [ext_resource type="Script" uid="uid://c8eyq2dosugne" path="res://Assets/Scripts/player_animator.gd" id="1_g5ct4"]
 [ext_resource type="Script" uid="uid://554sbk0d11m4" path="res://Assets/Scripts/hurtbox.gd" id="2_t1xgp"]
+[ext_resource type="Texture2D" uid="uid://6msxgxbau502" path="res://Assets/Sprites/You Win (2).png" id="5_w3t24"]
+[ext_resource type="Script" uid="uid://beacbqj63biso" path="res://Assets/Scripts/you_win.gd" id="6_c3tg1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij6vw"]
 size = Vector2(6, 12)
@@ -134,3 +136,11 @@ region_rect = Rect2(0, 0, 16, 16)
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_rvdaj")
 speed_scale = 1.5
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1302805578]
+visible = false
+position = Vector2(0, -8)
+texture = ExtResource("5_w3t24")
+script = ExtResource("6_c3tg1")
+
+[connection signal="visibility_changed" from="Sprite2D" to="Sprite2D" method="_on_visibility_changed"]

@@ -31,6 +31,9 @@ func start_archipelago_game():
 	
 #Level locations will be #
 func next_level():
+	if current_level_in_array == 10:
+		WinnerisYou.you_win()
+		Archipelago.set_client_status(30)
 	if archipelago:
 		Archipelago.collect_location(current_level_in_array)
 	current_level = level_list[current_level_in_array]
@@ -38,6 +41,7 @@ func next_level():
 	var full_path = level_path + "level_" + current_level + ".tscn"
 	get_tree().change_scene_to_file(full_path)
 	set_up_level()
+	
 	
 func set_up_level():
 	reset_key()
