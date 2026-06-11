@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name PlayerController
 
 @export var speed = 10.0
 @export var jump_power = 10.0
@@ -8,7 +9,11 @@ var jump_multiplier = -30.0
 var direction = 0
 #const SPEED = 300.0
 #const JUMP_VELOCITY = -400.0
-
+var dead = false :
+	set(value):
+		dead = value
+		if value == true:
+			trigger_death()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -28,3 +33,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed * speed_multiplier)
 
 	move_and_slide()
+	
+func trigger_death():
+	GameManager.dead()

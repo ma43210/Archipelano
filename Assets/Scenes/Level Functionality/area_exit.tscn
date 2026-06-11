@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://fme8lp15hkpa"]
+
+[ext_resource type="Script" uid="uid://gfh0kmbat7oj" path="res://Assets/Scripts/level_exit.gd" id="1_esopn"]
+[ext_resource type="Texture2D" uid="uid://2bu8x3u8wc3w" path="res://Assets/Sprites/door.png" id="1_rt7eh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esopn"]
+size = Vector2(14, 16)
+
+[node name="Level Exit" type="Area2D" unique_id=5125868 groups=["level_exits"]]
+collision_layer = 65536
+script = ExtResource("1_esopn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1264885542]
+shape = SubResource("RectangleShape2D_esopn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=535002986]
+texture = ExtResource("1_rt7eh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

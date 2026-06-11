@@ -18,13 +18,14 @@ config/name="GodotAP"
 config/description="Archipelago connection handler for Godot.
 See https://github.com/EmilyV99/GodotAP"
 config/version="0.4.1"
-run/main_scene="res://godot_ap/ui/main.tscn"
+run/main_scene="uid://dcenb15o8u5l3"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Archipelago="*res://godot_ap/autoloads/archipelago.tscn"
+GameManager="*uid://cqnjvxu5w3dfu"
 
 [display]
 
@@ -46,6 +47,30 @@ timers/tooltip_delay_sec=0.2
 theme/custom="res://godot_ap/ui/themes/dark_theme.tres"
 theme/custom_font="uid://bsf22ltaya6h0"
 
+[input]
+
+jump={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
+move_left={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)
+]
+}
+move_right={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
+]
+}
+
+[layer_names]
+
+2d_physics/layer_3="Death"
+2d_physics/layer_17="Transitions"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"

@@ -5,9 +5,9 @@
 class_name AP extends Node
 
 ## The game name to connect to. Empty string for `TextOnly` / `Tracker`/ `HintGame` clients.
-@export var AP_GAME_NAME := ""
+@export var AP_GAME_NAME := "Archipelano"
 ## The tags for your game.
-@export var AP_GAME_TAGS: Array[String] = []
+@export var AP_GAME_TAGS: Array[String] = ["Troll", "Platformer"]
 ## The version of your client. Arbitrary number for you to manage.
 @export var AP_CLIENT_VERSION := Version.val(0,0,0)
 ## The target AP version. Not arbitrary - used in `Connect` packet.
@@ -19,7 +19,7 @@ class_name AP extends Node
 @export var TRAP_LINK_ALIASES: Dictionary[String, String]
 @export_group("Client Settings")
 ## Prints what items have been previously collected when reconnecting to a slot.
-@export var AP_PRINT_ITEMS_ON_CONNECT := false
+@export var AP_PRINT_ITEMS_ON_CONNECT := true
 ## Hide item send messages that don't involve the client.
 @export var AP_HIDE_NONLOCAL_ITEMSENDS := true
 ## Automatically opens a default AP text console.
