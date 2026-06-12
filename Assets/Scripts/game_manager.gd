@@ -8,7 +8,7 @@ var key = 0
 var all_keys = []
 
 func randomize_levels():
-	var all_levels = ["1A", "1B", "2A", "2B", "3A", "3B", "4A", "4B"]
+	var all_levels = ["1A", "1B", "2A", "2B", "3A", "3B", "4A", "4B", "5A", "5B"]
 	all_levels.shuffle()
 	for i in 10:
 		level_list.append(all_levels.pop_front())
@@ -18,6 +18,7 @@ func randomize_levels():
 		pass
 	print(level_list)
 #DEBUG, DELETE PRINT LATER
+#GO FOR 10 LEVELS IF THERE'S TIME, OTHERWISE JUST KEEP DUPLICATES FOR NOW
 
 
 func _ready():
