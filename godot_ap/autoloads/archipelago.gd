@@ -7,7 +7,7 @@ class_name AP extends Node
 ## The game name to connect to. Empty string for `TextOnly` / `Tracker`/ `HintGame` clients.
 @export var AP_GAME_NAME := "Archipelano"
 ## The tags for your game.
-@export var AP_GAME_TAGS: Array[String] = ["Troll", "Platformer"]
+@export var AP_GAME_TAGS: Array[String] = []
 ## The version of your client. Arbitrary number for you to manage.
 @export var AP_CLIENT_VERSION := Version.val(0,0,0)
 ## The target AP version. Not arbitrary - used in `Connect` packet.

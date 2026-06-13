@@ -6,6 +6,7 @@ var current_level_in_array = 1
 var level_list = []
 var key = 0
 var all_keys = []
+var connection = ConnectionInfo.new()
 
 func randomize_levels():
 	var all_levels = ["1A", "1B", "2A", "2B", "3A", "3B", "4A", "4B", "5A", "5B"]
@@ -18,16 +19,18 @@ func randomize_levels():
 		pass
 	print(level_list)
 #DEBUG, DELETE PRINT LATER
-#GO FOR 10 LEVELS IF THERE'S TIME, OTHERWISE JUST KEEP DUPLICATES FOR NOW
+#KEEP DUPES, THERE IS NO TIME
 
 
 func _ready():
-	Archipelago.connected.connect(start_archipelago_game)
 	randomize_levels()
 	reset_key()
-
-func start_archipelago_game():
+	Archipelago.connected.connect(connect_script)
+	
+	
+func connect_script(_conn: ConnectionInfo, _json: Dictionary) -> void:
 	archipelago = true
+	Archipelago.set_deathlink(is_equal_approx(Archipelago.conn.slot_data["deathlink"], 1.0))
 	get_tree().change_scene_to_file("res://Assets/Scenes/Levels/Menu.tscn")
 	
 #Level locations will be #
@@ -35,7 +38,7 @@ func next_level():
 	if current_level_in_array == 10:
 		WinnerisYou.you_win()
 	if archipelago:
-		Archipelago.collect_location(current_level_in_array)
+		Archipelago.collect_location(10000x)
 	current_level = level_list[current_level_in_array]
 	current_level_in_array += 1
 	var full_path = level_path + "level_" + current_level + ".tscn"
@@ -46,7 +49,7 @@ func next_level():
 func set_up_level():
 	reset_key()
 	if archipelago:
-		if current_level_in_array in all_keys:
+		if current_level_in_array + 100 in all_keys:
 			current_level_in_array += 1
 			var door = get_tree().get_first_node_in_group("level_exits") as LevelExit
 			door.open()
@@ -55,6 +58,7 @@ func set_up_level():
 func add_key():
 	if archipelago:
 		Archipelago.collect_location(current_level_in_array + 100)
+		give_keys()
 	else:
 		key += 1
 		if key == 1:
@@ -69,13 +73,10 @@ func dead():
 	get_tree().change_scene_to_file("res://Assets/Scenes/Levels/level_" + level_list[0] + ".tscn")
 	reset_key()
 	current_level_in_array = 1
+	connection.send_deathlink("Trolled")
 
 
 #ARCHIPELAGO TESTING:
-func obtained_items(items: Array[NetworkItem]):
-	for i in items:
-			all_keys.append(i)
-
-
-func obtained_item(item: NetworkItem):
-		all_keys.append(item)
+func give_keys():
+	all_keys.append(Archipelago.conn.obtained_items)
+	print(all_keys)
