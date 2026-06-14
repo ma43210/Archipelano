@@ -2,12 +2,14 @@ extends Node
 var archipelago = false
 var current_level = ""
 var level_path = "res://Assets/Scenes/Levels/"
-var current_level_in_array = 1
+var current_level_in_array = 0
 var level_list = []
 var key = 0
 var all_keys = []
 var connection = ConnectionInfo.new()
-
+var ap_items_recieved = []
+var ap_locations_checked = []
+	
 func randomize_levels():
 	var all_levels = ["1A", "1B", "2A", "2B", "3A", "3B", "4A", "4B", "5A", "5B"]
 	all_levels.shuffle()
@@ -23,27 +25,34 @@ func randomize_levels():
 
 
 func _ready():
+	Archipelago.connected.connect(connect_script)
 	randomize_levels()
 	reset_key()
-	Archipelago.connected.connect(connect_script)
 	
 	
 func connect_script(_conn: ConnectionInfo, _json: Dictionary) -> void:
 	archipelago = true
-	Archipelago.set_deathlink(is_equal_approx(Archipelago.conn.slot_data["deathlink"], 1.0))
+	Archipelago.set_client_status(Archipelago.ClientStatus.CLIENT_PLAYING)
+	Archipelago.conn.obtained_item.connect(func(item): all_keys.append(item))
 	get_tree().change_scene_to_file("res://Assets/Scenes/Levels/Menu.tscn")
-	
+	ap_items_recieved = Archipelago.conn.received_items
 #Level locations will be #
 func next_level():
 	if current_level_in_array == 10:
 		WinnerisYou.you_win()
-	if archipelago:
-		Archipelago.collect_location(10000x)
-	current_level = level_list[current_level_in_array]
-	current_level_in_array += 1
-	var full_path = level_path + "level_" + current_level + ".tscn"
-	get_tree().change_scene_to_file(full_path)
-	set_up_level()
+		if archipelago:
+			Archipelago.collect_location(10000)
+			Archipelago.set_client_status(Archipelago.ClientStatus.CLIENT_GOAL)
+	else:
+		if archipelago:
+			if current_level not in ap_locations_checked:
+				Archipelago.collect_location(current_level_in_array)
+				ap_locations_checked.append(current_level_in_array)
+		current_level = level_list[current_level_in_array]
+		current_level_in_array += 1
+		var full_path = level_path + "level_" + current_level + ".tscn"
+		get_tree().change_scene_to_file(full_path)
+		set_up_level()
 	
 	
 func set_up_level():
@@ -58,7 +67,6 @@ func set_up_level():
 func add_key():
 	if archipelago:
 		Archipelago.collect_location(current_level_in_array + 100)
-		give_keys()
 	else:
 		key += 1
 		if key == 1:
@@ -69,14 +77,9 @@ func add_key():
 func reset_key():
 	key = 0
 
-func dead():
+func dead(from_deathlink := false):
 	get_tree().change_scene_to_file("res://Assets/Scenes/Levels/level_" + level_list[0] + ".tscn")
 	reset_key()
 	current_level_in_array = 1
-	connection.send_deathlink("Trolled")
-
-
-#ARCHIPELAGO TESTING:
-func give_keys():
-	all_keys.append(Archipelago.conn.obtained_items)
-	print(all_keys)
+	if not from_deathlink:
+		pass
