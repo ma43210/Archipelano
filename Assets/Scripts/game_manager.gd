@@ -8,7 +8,7 @@ var key = 0
 var all_keys = []
 var connection = ConnectionInfo.new()
 var ap_items_recieved = []
-var ap_locations_checked = []
+var keys = []
 	
 func randomize_levels():
 	var all_levels = ["1A", "1B", "2A", "2B", "3A", "3B", "4A", "4B", "5A", "5B"]
@@ -33,7 +33,7 @@ func _ready():
 func connect_script(_conn: ConnectionInfo, _json: Dictionary) -> void:
 	archipelago = true
 	Archipelago.set_client_status(Archipelago.ClientStatus.CLIENT_PLAYING)
-	Archipelago.conn.obtained_item.connect(func(item): all_keys.append(item))
+	Archipelago.conn.obtained_item.connect(func(item): all_keys.append(item.id))
 	get_tree().change_scene_to_file("res://Assets/Scenes/Levels/Menu.tscn")
 	ap_items_recieved = Archipelago.conn.received_items
 #Level locations will be #
@@ -45,21 +45,17 @@ func next_level():
 			Archipelago.set_client_status(Archipelago.ClientStatus.CLIENT_GOAL)
 	else:
 		if archipelago:
-			if current_level not in ap_locations_checked:
 				Archipelago.collect_location(current_level_in_array)
-				ap_locations_checked.append(current_level_in_array)
 		current_level = level_list[current_level_in_array]
 		current_level_in_array += 1
 		var full_path = level_path + "level_" + current_level + ".tscn"
 		get_tree().change_scene_to_file(full_path)
 		set_up_level()
-	
-	
+		
 func set_up_level():
 	reset_key()
 	if archipelago:
 		if current_level_in_array + 100 in all_keys:
-			current_level_in_array += 1
 			var door = get_tree().get_first_node_in_group("level_exits") as LevelExit
 			door.open()
 
