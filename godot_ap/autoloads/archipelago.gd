@@ -19,7 +19,7 @@ class_name AP extends Node
 @export var TRAP_LINK_ALIASES: Dictionary[String, String]
 @export_group("Client Settings")
 ## Prints what items have been previously collected when reconnecting to a slot.
-@export var AP_PRINT_ITEMS_ON_CONNECT := true
+@export var AP_PRINT_ITEMS_ON_CONNECT := false
 ## Hide item send messages that don't involve the client.
 @export var AP_HIDE_NONLOCAL_ITEMSENDS := true
 ## Automatically opens a default AP text console.

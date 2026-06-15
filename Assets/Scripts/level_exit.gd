@@ -3,14 +3,15 @@ class_name LevelExit
 
 var is_open = false
 func _ready():
-	close()
+	is_open = false
 	
 func open():
-	is_open = true
+	self.is_open = true
+	print("YAY!!!!!!!")
 
-func close():
-	is_open = false
 
 func _on_body_entered(body):
+	print("e")
 	if is_open && body is PlayerController:
 		GameManager.next_level()
+		print("YAY")
