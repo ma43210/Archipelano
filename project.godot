@@ -25,9 +25,8 @@ config/features=PackedStringArray("4.6", "Mobile")
 
 Archipelago="*res://godot_ap/autoloads/archipelago.tscn"
 GameManager="*uid://cqnjvxu5w3dfu"
-WinnerisYou="*uid://beacbqj63biso"
 Exit="*uid://gfh0kmbat7oj"
-Animations="*uid://cri4lnwg3568q"
+player_controller="*uid://dfhwyc5edpde5"
 
 [display]
 

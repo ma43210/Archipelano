@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dxss767w4bs2e"]
+
+[ext_resource type="AudioStream" uid="uid://b6b3m8uyuj1yt" path="res://Assets/Sounds/Music/Fens-of-Fog.mp3" id="1_mvfvh"]
+
+[sub_resource type="GDScript" id="GDScript_mvfvh"]
+script/source = "extends AudioStreamPlayer
+func play_sound():
+	var player = AudioStreamPlayer.new()
+	add_child(player)
+	player.stream = stream
+	player.play()
+"
+
+[node name="Music" type="AudioStreamPlayer" unique_id=2111228136]
+process_mode = 3
+stream = ExtResource("1_mvfvh")
+parameters/looping = true
+script = SubResource("GDScript_mvfvh")
