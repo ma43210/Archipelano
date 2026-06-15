@@ -9,7 +9,6 @@ var all_keys = []
 var keys = []
 var ap_items_recieved: Array[NetworkItem] = []
 var gamestart = true
-
 func randomize_levels():
 	var all_levels = ["1A", "1B", "2A", "2B", "3A", "3B", "4A", "4B", "5A", "5B"]
 	all_levels.shuffle()
@@ -28,14 +27,16 @@ func _ready():
 	reset_key()
 	
 	
-func connect_script() -> void:
+func connect_script(_conn: ConnectionInfo, _json: Dictionary) -> void:
 	archipelago = true
 	Archipelago.set_client_status(Archipelago.ClientStatus.CLIENT_PLAYING)
-	Archipelago.conn.obtained_item.connect(func(item: NetworkItem): all_keys.append(item.get_id()))
-	print(all_keys)
-
+	Archipelago.conn.obtained_item.connect(get_item)
 	get_tree().change_scene_to_file("res://Assets/Scenes/Levels/Menu.tscn")
 #Level locations will be #
+func get_item(item: NetworkItem):
+	all_keys.append(item.id)
+	print(all_keys)
+
 func start_game():
 	current_level = level_list[current_level_in_array]
 	var full_path = level_path + "level_" + current_level + ".tscn"
@@ -50,8 +51,8 @@ func next_level():
 	else:
 		if archipelago:
 				Archipelago.collect_location(current_level_in_array + 1)
-		current_level = level_list[current_level_in_array]
 		current_level_in_array += 1
+		current_level = level_list[current_level_in_array]
 		var full_path = level_path + "level_" + current_level + ".tscn"
 		get_tree().change_scene_to_file(full_path)
 		set_up_level()
@@ -83,8 +84,3 @@ func dead(from_deathlink := false):
 	current_level_in_array = 0
 	if not from_deathlink:
 		pass
-
-func get_ap_item(item: NetworkItem) -> void:
-	all_keys.append(item.get_id())
-	print(all_keys)
-	
