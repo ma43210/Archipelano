@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://2vjp5n6byxok"]
+
+[ext_resource type="Script" uid="uid://dyvlmtfwprish" path="res://Assets/Scripts/back_button.gd" id="1_u8ubb"]
+
+[node name="Node2D" type="Node2D" unique_id=89866194]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1634863071]
+offset_right = 3479.0
+offset_bottom = 1787.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=48309935]
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 4031.4995
+offset_bottom = 1901.9999
+scale = Vector2(0.4, 0.4)
+bbcode_enabled = true
+text = "[font_size=170]Art:
+Citizen Abel
+Programming and Game Design:
+ma43210 (Thats me!)
+Music:
+itsolie
+[/font_size]"
+
+[node name="Button" type="Button" parent="." unique_id=1952827579]
+offset_left = 1982.0
+offset_top = 1102.0
+offset_right = 2122.0
+offset_bottom = 1179.0
+text = "BACK"
+script = ExtResource("1_u8ubb")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

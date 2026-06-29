@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://buyhd24va5nu2"]
+
+[ext_resource type="Script" uid="uid://c6ejbhinwcsq0" path="res://Assets/Scripts/credits.gd" id="1_7r3by"]
+
+[node name="Node2D" type="Node2D" unique_id=1179264554]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=19446402]
+position = Vector2(268, 165)
+zoom = Vector2(2.525, 2.525)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1526472425]
+offset_left = -157.0
+offset_top = -82.0
+offset_right = 729.0
+offset_bottom = 465.0
+color = Color(1.0877549e-05, 0.30636966, 0.84132606, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=221145193]
+offset_left = 155.0
+offset_top = 107.0
+offset_right = 4735.0
+offset_bottom = 1166.9998
+scale = Vector2(0.05, 0.05)
+bbcode_enabled = true
+text = "[font_size=400]YOU WON!
+THANKS FOR PLAYING![/font_size]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="Credits" type="Button" parent="." unique_id=1821600447]
+offset_left = 197.0
+offset_top = 217.0
+offset_right = 334.0
+offset_bottom = 278.0
+text = "Credits"
+script = ExtResource("1_7r3by")
+
+[connection signal="pressed" from="Credits" to="Credits" method="_on_pressed"]

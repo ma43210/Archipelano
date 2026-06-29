@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b5fx40mt5mpy7"]
+
+[ext_resource type="Texture2D" uid="uid://cn53pbocj8ouf" path="res://Assets/Sprites/pedistal.png" id="1_xnetp"]
+[ext_resource type="Script" uid="uid://b1n5cqjgd8pnq" path="res://Assets/Scripts/pedistal_animation.gd" id="2_pm32x"]
+[ext_resource type="Texture2D" uid="uid://cnuc3d7gbbwkt" path="res://Assets/Sprites/hat.png" id="3_xnetp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ry6n7"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klmi0"]
+size = Vector2(24, 20)
+
+[node name="Area" type="Area2D" unique_id=1930069944]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1584521410]
+texture = ExtResource("1_xnetp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1268980815]
+visible = false
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ry6n7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=921803222 node_paths=PackedStringArray("sprite")]
+physics_interpolation_mode = 2
+visible = false
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_klmi0")
+script = ExtResource("2_pm32x")
+sprite = NodePath("../Sprite2D2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=365865317]
+visible = false
+position = Vector2(0, -12)
+texture = ExtResource("3_xnetp")
+
+[connection signal="body_entered" from="." to="CollisionShape2D2" method="_on_area_2d_body_entered"]

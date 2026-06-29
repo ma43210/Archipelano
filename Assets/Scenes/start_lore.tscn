@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dlv35xvd3uc32"]
+
+[ext_resource type="Texture2D" uid="uid://2bu8x3u8wc3w" path="res://Assets/Sprites/door.png" id="1_3ngnu"]
+[ext_resource type="Texture2D" uid="uid://cn53pbocj8ouf" path="res://Assets/Sprites/pedistal.png" id="2_uqcy6"]
+[ext_resource type="Texture2D" uid="uid://cnuc3d7gbbwkt" path="res://Assets/Sprites/hat.png" id="4_b5vqc"]
+[ext_resource type="Script" uid="uid://cwak2y0werrao" path="res://Assets/Scripts/lore_button.gd" id="4_uqcy6"]
+
+[node name="Node2D" type="Node2D" unique_id=707649877]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=753624798]
+offset_left = -672.0
+offset_top = -503.0
+offset_right = 907.0
+offset_bottom = 271.0
+color = Color(0.90588236, 0.8509804, 0.4745098, 1)
+
+[node name="Door" type="Sprite2D" parent="." unique_id=2137817689]
+position = Vector2(69.99999, -80)
+scale = Vector2(10, 10)
+texture = ExtResource("1_3ngnu")
+
+[node name="Pedistal" type="Sprite2D" parent="." unique_id=960534285]
+position = Vector2(225.00002, -80.00001)
+scale = Vector2(10, 10)
+texture = ExtResource("2_uqcy6")
+
+[node name="Hat" type="Sprite2D" parent="." unique_id=466825654]
+position = Vector2(225, -200)
+scale = Vector2(10, 10)
+texture = ExtResource("4_b5vqc")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1496496584]
+position = Vector2(150, -101)
+
+[node name="Button" type="Button" parent="." unique_id=239906598]
+offset_left = -28.0
+offset_top = 18.0
+offset_right = 315.0
+offset_bottom = 66.0
+text = "Put on the Hat and Enter the Door"
+script = ExtResource("4_uqcy6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=870260568]
+offset_left = -33.000008
+offset_top = -273.0
+offset_right = 1696.9999
+offset_bottom = 92.0
+scale = Vector2(0.2, 0.2)
+bbcode_enabled = true
+text = "[font_size=250]ARCHIPELANO[/font_size]"
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

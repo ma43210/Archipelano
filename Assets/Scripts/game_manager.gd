@@ -40,7 +40,7 @@ func connect_script(_conn: ConnectionInfo, _json: Dictionary) -> void:
 	Archipelago.conn.obtained_item.connect(get_item)
 	Archipelago.set_client_status(Archipelago.ClientStatus.CLIENT_PLAYING)
 	archipelago = true
-	get_tree().change_scene_to_file("res://Assets/Scenes/Levels/Menu.tscn")
+	get_tree().change_scene_to_file("res://Assets/Scenes/start_lore.tscn")
 
 func get_item(item: NetworkItem):
 	self.all_keys.append(int(item.id))
@@ -53,10 +53,7 @@ func start_game():
 
 func next_level():
 	if current_level_in_array == 9:
-		win = true
-		if archipelago:
-			Archipelago.collect_location(10000)
-			Archipelago.set_client_status(Archipelago.ClientStatus.CLIENT_GOAL)
+		get_tree().change_scene_to_file("res://Assets/Scenes/end_lore.tscn")
 	else:
 		if archipelago:
 				Archipelago.collect_location(current_level_in_array + 1)
@@ -71,6 +68,11 @@ func set_up_level():
 	exit_is_open = false
 	reset_key()
 
+func winner_is_you():
+	win = true
+	if archipelago:
+		Archipelago.collect_location(10000)
+		Archipelago.set_client_status(Archipelago.ClientStatus.CLIENT_GOAL)
 
 
 func add_key():

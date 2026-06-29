@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcenb15o8u5l3"]
+[gd_scene format=3 uid="uid://dcenb15o8u5l3"]
 
 [ext_resource type="PackedScene" uid="uid://by2e76emlvtsg" path="res://godot_ap/ui/base_window.tscn" id="1_0wxg5"]
 [ext_resource type="PackedScene" uid="uid://cn7ah7d3ep4de" path="res://godot_ap/ui/common_client.tscn" id="2_nqm1h"]
+[ext_resource type="Script" uid="uid://d1eg0hefjxblu" path="res://godot_ap/ui/has_no_friends_button.gd" id="3_1vct4"]
 
-[node name="Console" instance=ExtResource("1_0wxg5")]
+[node name="Console" unique_id=2026464378 instance=ExtResource("1_0wxg5")]
 gui_embed_subwindows = true
+oversampling_override = 1.0
 title = "Archipelago Console"
 size = Vector2i(1152, 648)
 min_size = Vector2i(750, 400)
 
-[node name="ConsoleContainer" parent="." index="0" instance=ExtResource("2_nqm1h")]
+[node name="ConsoleContainer" parent="." index="0" unique_id=1954660831 instance=ExtResource("2_nqm1h")]
+
+[node name="Button" type="Button" parent="." index="1" unique_id=974746649]
+offset_left = 448.0
+offset_top = 225.0
+offset_right = 645.0
+offset_bottom = 347.0
+text = "I Have No Friends"
+script = ExtResource("3_1vct4")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

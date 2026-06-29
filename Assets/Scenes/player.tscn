@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://554sbk0d11m4" path="res://Assets/Scripts/hurtbox.gd" id="2_t1xgp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij6vw"]
-size = Vector2(6, 12)
+size = Vector2(6, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38rej"]
-size = Vector2(6, 12)
+size = Vector2(6, 8)
 
 [sub_resource type="Animation" id="Animation_4cfi8"]
 length = 0.001
@@ -90,6 +90,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_t1xgp"]
 resource_name = "win"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -97,10 +98,10 @@ tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.03333336, 0.96666664),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Rect2(0, 64, 16, 20), Rect2(0, 64, 16, 20)]
+"values": [Rect2(0, 64, 16, 16), Rect2(0, 64, 16, 16)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rvdaj"]
@@ -119,7 +120,7 @@ collision_mask = 65537
 script = ExtResource("1_36gbj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1231551388]
-position = Vector2(0, -6)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_ij6vw")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1793595997]
@@ -132,7 +133,7 @@ collision_mask = 4
 script = ExtResource("2_t1xgp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1459377692]
-position = Vector2(0, -6)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_38rej")
 
 [node name="PlayerAnimator" type="Node2D" parent="." unique_id=881545678 node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
@@ -142,8 +143,8 @@ animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator" unique_id=1963944556]
-position = Vector2(0, -6.325)
-scale = Vector2(1, 0.792)
+position = Vector2(0, -8)
+scale = Vector2(1.055, 1)
 texture = ExtResource("1_ast1v")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
